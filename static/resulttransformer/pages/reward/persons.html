@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projects</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/reward.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="row p-0 m-0 proBanner" id="proBanner">
+      </div>
+      <!-- partial:partials/_navbar.html -->
+      <div class="_navbar"></div>
+      <!-- partial -->
+      <div id="content" class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <div class="_sidebar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <!-- title -->
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-account-multiple-outline"></i>
+                </span> 成员列表
+              </h3>
+              <!-- <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav> -->
+            </div>
+            <!-- end title -->
+            <!-- content -->
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <button id="addperson" type="button" class="btn btn-gradient-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="mdi mdi-plus"></i> 添加 </button>
+                      <button id="topersonlist" type="button" class="btn btn-gradient-warning btn-icon-text">
+                        <i class="mdi mdi-keyboard-backspace"></i> 返回 </button>
+                      <button id="editperson" type="button" class="btn btn-gradient-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <i class="mdi mdi-border-color"></i> 编辑 </button>
+                        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button> -->
+                    </div>
+                    <div class="form-group">
+                      <table id="score" class="table table-hover table-bordered">
+                        <thead>
+                          <th>序号</th>
+                          <th>姓名</th>
+                          <th>职位</th>
+                          <th>平均难度系数</th>
+                          <th>平均工时系数</th>
+                          <th>平均责任等级</th>
+                          <th>平均系数</th>
+                          <th>平均占比</th>
+                          <th>总数额(元)</th>
+                          <th>池子奖金(元)</th>
+                          <th style="width: 100px;" class="addstyle">操作</th>
+                        </thead>
+                        <tbody>
+                          <tr class="person_null list_null">
+                            <td colspan="10">暂无记录</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="form-group">
+                      <table id="projects" class="table table-hover table-bordered">
+                        <thead>
+                          <th>项目名字</th>
+                          <th>难度系数(<span id="troublerate">50</span>%)</th>
+                          <th>工时系数(<span id="durationrate">40</span>%)</th>
+                          <th>责任等级(<span id="responserate">10</span>%)</th>
+                          <th>系数</th>
+                          <th>占比</th>
+                          <th>数额</th>
+                          <!-- <th>池子奖金</th> -->
+                          <th>录入时间</th>
+                          <th style="width: 100px;" class="addstyle">操作</th>
+                        </thead>
+                        <tbody>
+                          <tr class="project_null list_null">
+                            <td colspan="10">暂无记录</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end content -->
+      <!--
+        <div>
+          <button id="topersonlist">返回</button>
+        </div>
+        <table id="score">
+          <thead>
+            <th>姓名</th>
+            <th>平均难度系数</th>
+            <th>平均工时系数</th>
+            <th>平均责任等级</th>
+            <th>平均系数</th>
+            <th>平均占比</th>
+            <th>总数额</th>
+            <th style="width: 100px;" class="addstyle">操作</th>
+          </thead>
+          <tbody>
+            <tr class="person_null list_null">
+              <td colspan="8">暂无记录</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <table id="projects">
+          <thead>
+            <th>项目名字</th>
+            <th>难度系数(<span id="troublerate">50</span>%)</th>
+            <th>工时系数(<span id="durationrate">40</span>%)</th>
+            <th>责任等级(<span id="responserate">10</span>%)</th>
+            <th>系数</th>
+            <th>占比</th>
+            <th>数额</th>
+            <th>录入时间</th>
+            <th style="width: 100px;" class="addstyle">操作</th>
+          </thead>
+          <tbody>
+            <tr class="project_null list_null">
+              <td colspan="9">暂无记录</td>
+            </tr>
+          </tbody>
+        </table>
+        <button id="addscore" class="addstyle">加一行</button>
+        <br>
+        <button id="btn" class="addstyle">Download</button>
+        <br>
+        <button id="reset" class="addstyle">重置</button><button id="submit" class="addstyle">提交</button>
+      -->
+      </div>
+      <!-- partial:partials/_footer.html -->
+      <div class="_footer"></div>
+      <!-- partial -->
+    </div>
+
+    <!-- 修改成员弹框 -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">  </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="editName" class="col-form-label">姓名:</label>
+                <input type="text" class="form-control" id="editName">
+              </div>
+              <div class="mb-3">
+                <label for="editPosition" class="col-form-label">职位:</label>
+                <input type="text" class="form-control" id="editPosition">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <span class="edit-tips badge rounded-pill"></span>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> 关闭 </button>
+            <button type="button" class="btn btn-success" id="confirmEdit"> 确定 </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="http://47.97.159.26:8081/api/v1/fs/fsvc-40CcBVsgfDr4/jquery.min.js"></script>
+    <script src="../../assets/js/reward/reward_common.js"></script>
+    <!-- <script src="http://47.97.159.26:8081/api/v1/fs/fsvc-40CcBVsgfDr4/score.js"></script> -->
+    <script src="../../assets/js/reward/api.js"></script>
+    <script src="../../assets/js/reward/persons.js"></script>
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>

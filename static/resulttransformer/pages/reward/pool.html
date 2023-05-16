@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Projects</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/reward.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <div class="row p-0 m-0 proBanner" id="proBanner">
+      </div>
+      <!-- partial:partials/_navbar.html -->
+      <div class="_navbar"></div>
+      <!-- partial -->
+      <div id="content" class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <div class="_sidebar"></div>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <!-- title -->
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-pool"></i>
+                </span> 项目池子
+              </h3>
+              <!-- <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+              </nav> -->
+            </div>
+            <!-- end title -->
+            <!-- content -->
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="form-group">
+                      <button id="addpool" type="button" class="btn btn-gradient-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#editpoolModal">
+                        <i class="mdi mdi-plus"></i> 添加 </button>
+                      <!-- <button id="outpool" type="button" class="btn btn-gradient-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#outpoolModal">
+                          <i class="mdi mdi-plus"></i> 拿出 </button> -->
+                      <button id="topoollist" type="button" class="btn btn-gradient-warning btn-icon-text">
+                        <i class="mdi mdi-keyboard-backspace"></i> 返回 </button>
+                    </div>
+                      <div class="row form-group">
+                        <div class="col-sm-3">
+                          <label>总池子金额(单位：万元):</label>
+                          <input id="totalmoneypool" class="form-control form-control-sm" readonly="readonly" />
+                        </div>
+                        <div class="col-sm-3">
+                          <label>已到款池子金额(单位：万元):</label>
+                          <input id="inputpool" class="form-control form-control-sm" readonly="readonly"/>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>已使用池子金额(单位：万元):</label>
+                          <input id="outputpool" class="form-control form-control-sm" readonly="readonly"/>
+                        </div>
+                        <div class="col-sm-3">
+                          <label>剩余池子金额(万元):</label>
+                          <input id="restpool" class="form-control form-control-sm" readonly="readonly" />
+                        </div>
+                      </div>
+                    <div class="form-group">
+                      <div id="poollist" class="form-group">
+                        <table id="pool_list" class="table table-hover table-bordered">
+                          <thead>
+                            <th>项目名称</th>
+                            <th>类型</th>
+                            <th>增量(万元)</th>
+                            <th>增后总金额(万元)</th>
+                            <th>时间</th>
+                          </thead>
+                          <tbody>
+                            <tr class="pool_null list_null"><td colspan="5">暂无数据</td></tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end content -->
+      </div>
+      <!-- partial:partials/_footer.html -->
+      <div class="_footer"></div>
+      <!-- partial -->
+    </div>
+
+    <!-- 修改成员弹框 -->
+    <div class="modal fade" id="editpoolModal" tabindex="-1" aria-labelledby="editpoolModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editpoolModalLabel">  </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="edittotalpool" class="col-form-label">剩余池子金额(万元)</label>
+                <input type="text" class="form-control totalpool" id="edittotalpool" readonly="readonly">
+              </div>
+              <div class="mb-3">
+                <label for="amount" class="col-form-label">增加金额(万元)</label>
+                <input type="text" class="form-control" id="amount">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <span class="editpool-tips badge rounded-pill"></span>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> 关闭 </button>
+            <button type="button" class="btn btn-success" id="confirmEdit"> 确定 </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 拿出池子金额 -->
+    <div class="modal fade" id="outpoolModal" tabindex="-1" aria-labelledby="outpoolModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="outpoolModalLabel">  </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="outtotalpool" class="col-form-label">剩余池子金额(万元)</label>
+                <input type="text" class="form-control totalpool" id="outtotalpool" readonly="readonly">
+              </div>
+              <div class="mb-3">
+
+                <div class="row form-group">
+                  <div class="col-sm-6">
+                    <label for="awardtax" class="col-form-label">成员姓名</label>
+                    <div class="outnamearr">
+                      <!-- <input id="awardtax" value="0" class="form-control"/> -->
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="outamount" class="col-form-label">使用金额(万元)</label>
+                    <input type="text" class="form-control" id="outamount">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <span class="editpool-tips badge rounded-pill"></span>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> 关闭 </button>
+            <button type="button" class="btn btn-success" id="outconfirmEdit"> 确定 </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="http://47.97.159.26:8081/api/v1/fs/fsvc-40CcBVsgfDr4/jquery.min.js"></script>
+    <script src="../../assets/js/reward/reward_common.js"></script>
+    <!-- <script src="http://47.97.159.26:8081/api/v1/fs/fsvc-40CcBVsgfDr4/score.js"></script> -->
+    <script src="../../assets/js/reward/api.js"></script>
+    <script src="../../assets/js/reward/pool.js"></script>
+    <!-- plugins:js -->
+    <script src="../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="../../assets/js/off-canvas.js"></script>
+    <script src="../../assets/js/hoverable-collapse.js"></script>
+    <script src="../../assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- End custom js for this page -->
+  </body>
+</html>
