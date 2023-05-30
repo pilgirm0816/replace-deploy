@@ -41,7 +41,7 @@ func colored(s string, color interface{}) string {
 	return strings.Join([]string{colorValue, s, "\033[0m"}, "")
 }
 
-// CreateRandomUuid Randomly generate Uuids
+// CreateRandomUuid Randomly generate Uuid
 func CreateRandomUuid() string {
 	uuid := make([]byte, 16)
 	n, err := rand.Read(uuid)

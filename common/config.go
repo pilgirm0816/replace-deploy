@@ -6,8 +6,8 @@ var (
 	// 拉取远端代码所需要的信息
 	Branch    = "master"
 	RemoteUrl = "https://gitee.com/xiaozhangy/delivery-script-market" // 后期必须要改为公司代码仓库的源
-	UserName  = "xiaozhangy"
-	PassWord  = "zhangyan816bin"
+	UserName  = "xxxxxx"
+	PassWord  = "xxxxxx"
 
 	// Headers default Headers
 	Headers http.Header = nil
