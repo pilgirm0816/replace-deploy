@@ -7,7 +7,7 @@
 cd
 set "current_dir=%CD%"
 # Build App
-cd %current_dir% && go build -ldflags="-w -s" -o bin/Win/Replace-Deploy/Replace-Deploy.exe main.go
+cd %current_dir% && go build -ldflags="-w -s" -o bin/Win/Replace-Deploy/Replace-Deploy.exe build_win.go
 
 copy  static bin/Win/Replace-Deploy/
 

@@ -1,4 +1,4 @@
-const host = 'http://47.97.159.26:8081/'
+const host = 'http://10.200.14.95:8088/'
 const api = {
   // 登录 
   "简单登录": host + "api/v1/al/auln-IG3Tkwa1sy3T", //do_login
