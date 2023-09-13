@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"text/template"
 )
 
@@ -121,24 +122,34 @@ func Gzip(exPath string) (bool, string, error) {
 	zipWriter := zip.NewWriter(zipFile)
 	defer zipWriter.Close()
 
+	// 使用互斥锁确保并发安全
+	var mutex sync.Mutex
+
 	// Recursively compresses the specified directory
 	err = filepath.Walk(dirToZip, func(path string, info fs.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 
+		// 使用 filepath.ToSlash 将路径分隔符转换为斜杠
+		normalizedPath := filepath.ToSlash(path)
+
 		// Skip top-level directories and other subdirectories
-		if path == dirToZip || !strings.HasPrefix(path, dirToZip+"/") {
+		if normalizedPath == filepath.ToSlash(dirToZip) || !strings.HasPrefix(normalizedPath, filepath.ToSlash(dirToZip)+"/") {
 			return nil
 		}
 		header, err := zip.FileInfoHeader(info)
 		if err != nil {
 			return err
 		}
-		header.Name = strings.TrimPrefix(path, dirToZip+"/")
+		header.Name = strings.TrimPrefix(normalizedPath, filepath.ToSlash(dirToZip)+"/")
 		if info.IsDir() {
 			header.Name += "/"
+
+			mutex.Lock()
 			_, err = zipWriter.CreateHeader(header)
+			mutex.Unlock()
+
 			if err != nil {
 				return err
 			}
@@ -147,7 +158,7 @@ func Gzip(exPath string) (bool, string, error) {
 			if err != nil {
 				return err
 			}
-			file, err := os.Open(path)
+			file, err := os.Open(normalizedPath)
 			if err != nil {
 				return err
 			}
